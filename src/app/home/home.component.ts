@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { Contact } from '../shared/interface/contact.interface';
+import { ContactService } from '../shared/data-access/contact.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule, HttpClientModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+  providers: [ContactService]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+
+  public contacts: Contact[] = [];
+
+  constructor(private contactService: ContactService){}
+
+  ngOnInit(): void {
+    this.contactService.getContacts()
+    .subscribe(contacts => this.contacts = contacts)
+  }
 
 }

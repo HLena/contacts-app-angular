@@ -1,3 +1,26 @@
-<p>home works!</p>
-<router-outlet />
+
+<div id="template">
+  <div id="sidebar">
+    <h1>Angular Contacts</h1>
+    <div>
+      <input type="text" placeholder="search">
+      <button>New</button>
+    </div>
+    <nav>
+      <ul>
+        @for (contact of contacts; track $index) {
+      <li>
+        <button [routerLink]="['/contact', contact.id]">
+          {{contact.name}} {{contact.lastname}}
+        </button>
+      </li>
+      }
+
+      </ul>
+    </nav>
+  </div>
+  <div id="detail">
+    <router-outlet />
+  </div>
+</div>
 
