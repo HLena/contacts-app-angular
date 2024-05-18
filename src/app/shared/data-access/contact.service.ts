@@ -20,4 +20,8 @@ export class ContactService {
     return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`);
   }
 
+  updateContact(id: string, body: Partial<Contact>):Observable<Contact>{
+    return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body);
+  }
+  
 }

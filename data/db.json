@@ -1,5 +1,5 @@
 {
-  "contacts":[
+  "contacts": [
     {
       "id": "1",
       "name": "John",
@@ -15,7 +15,7 @@
       "lastname": "Smith",
       "twitter_username": "@janesmith",
       "avatar_url": "https://example.com/avatars/janesmith.jpg",
-      "favorite": false,
+      "favorite": true,
       "note": "Works in marketing."
     },
     {
@@ -24,7 +24,7 @@
       "lastname": "Johnson",
       "twitter_username": "@emilyjohnson",
       "avatar_url": "https://example.com/avatars/emilyjohnson.jpg",
-      "favorite": true,
+      "favorite": false,
       "note": "Friend from college."
     },
     {
@@ -91,5 +91,4 @@
       "note": "Former colleague."
     }
   ]
-
 }

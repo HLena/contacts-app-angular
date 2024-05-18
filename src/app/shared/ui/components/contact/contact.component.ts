@@ -31,7 +31,16 @@ export class ContactComponent implements OnInit {
 
   handleFavorite() {
     if (this.contact) {
-      this.contact.favorite = !this.contact.favorite;
+      const newFavoriteStatus = !this.contact.favorite;
+      this.contactService.updateContact(this.userId, { favorite: newFavoriteStatus }).subscribe({
+        next: updatedContact => {
+          this.contact = updatedContact;
+          this.contact.favorite = newFavoriteStatus;
+        },
+        error: err => {
+          console.error('Error:', err);
+        }
+      });
     }
   }
 }
