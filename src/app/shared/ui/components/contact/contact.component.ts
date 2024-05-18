@@ -23,7 +23,7 @@ export class ContactComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap(params => {
         this.userId = params.get("id") || "";
-        return this.contactService.getContact(this.userId)
+        return this.contactService.getContactById(this.userId)
       })
     ).subscribe(contact => { this.contact = contact })
   }

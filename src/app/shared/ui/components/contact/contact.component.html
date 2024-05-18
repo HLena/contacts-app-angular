@@ -1,2 +1,15 @@
-<h1>{{contact?.name}} {{contact?.lastname}}</h1>
-<p>{{contact?.twitter_username}}</p>
+<div id="contact">
+    <div>
+        <img src="{{contact?.avatar_url}}" alt="{{contact?.name}}-{{contact?.lastname}}">
+    </div>
+    <div>
+        <div class="">
+            <h1>{{contact?.name}} {{contact?.lastname}}</h1>
+            <button>✩</button>
+        </div>
+        <div>
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+</div>
