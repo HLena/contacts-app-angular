@@ -1,1 +1,16 @@
-<p>contact works!</p>
+<div id="contact">
+    <div>
+        <img src="{{contact?.avatar_url}}" alt="{{contact?.name}}-{{contact?.lastname}}">
+    </div>
+    <div>
+        <h1>
+            {{contact?.name}} {{contact?.lastname}}
+            <div class="form"><button class="star-btn" [ngClass]="{starred: contact?.favorite}" (click)="handleFavorite()">☆</button></div>
+        </h1>
+        <p><a class="twitter-link" href="https://x.com/{{contact?.twitter_username}}" target="_blank">{{contact?.twitter_username}}</a></p>
+        <div>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+</div>
