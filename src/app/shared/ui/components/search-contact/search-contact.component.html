@@ -1,17 +1,14 @@
 <h1>Angular Contacts</h1>
 <div id="search-input">
-  <form action="">
     <input
       id="query"
       aria-label="Search contacts"
       type="search"
       placeholder="Search"
-      [formControl]="searchInput"
-      (input)="searchContact()"
+      (input)="onSearchChange($event)"
     >
     <!-- <div id="search-spinner" aria-hidden hidden="false"> </div> -->
-  </form>
-  <button>New</button>
+    <button>New</button>
 </div>
 <nav>
   <ul>
