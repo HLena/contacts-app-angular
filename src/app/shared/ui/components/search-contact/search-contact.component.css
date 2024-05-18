@@ -21,18 +21,13 @@ div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 2rem;
   border-bottom: 1px solid #e3e3e3;
   justify-content: center;
-}
-
-div form {
   position: relative;
 }
 
-/* div form  */
-div form input[type="search"] {
+div input[type="search"] {
   box-sizing: border-box;
   width: 100%;
   padding-left: 2rem;
@@ -43,7 +38,7 @@ div form input[type="search"] {
   position: relative;
 }
 
-div form input[type="search"].loading {
+div input[type="search"].loading {
   background-image: none;
 }
 
