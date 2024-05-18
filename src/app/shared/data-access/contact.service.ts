@@ -16,4 +16,8 @@ export class ContactService {
     return this.http.get<Contact[]>(`${this.baseUrl}/contacts`)
   }
 
+  getContact(id: string):Observable<Contact>{
+    return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`);
+  }
+
 }
