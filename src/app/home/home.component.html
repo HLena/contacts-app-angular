@@ -8,14 +8,13 @@
     </div>
     <nav>
       <ul>
-        @for (contact of contacts; track $index) {
+      @for (contact of contacts; track $index) {
       <li>
         <button [routerLink]="['/contact', contact.id]">
           {{contact.name}} {{contact.lastname}}
         </button>
       </li>
       }
-
       </ul>
     </nav>
   </div>
