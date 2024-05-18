@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Contact } from '../../../interface/contact.interface';
+import { Contact } from '../../../../shared/interface/contact.interface';
 import { ContactService } from '../../../data-access/contact.service';
 import { switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';

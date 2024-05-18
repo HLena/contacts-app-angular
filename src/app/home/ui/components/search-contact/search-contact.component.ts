@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactService } from '../../../data-access/contact.service';
-import { Contact } from '../../../interface/contact.interface';
+import { Contact } from '../../../../shared/interface/contact.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable,  debounceTime, distinctUntilChanged, switchMap } from 'rxjs';

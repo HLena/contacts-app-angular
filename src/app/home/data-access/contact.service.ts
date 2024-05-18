@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Contact } from '../interface/contact.interface';
+import { Contact } from '../../shared/interface/contact.interface';
 import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';

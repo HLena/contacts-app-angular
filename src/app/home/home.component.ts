@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContactService } from '../shared/data-access/contact.service';
-import { SearchContactComponent } from '../shared/ui/components/search-contact/search-contact.component';
+import { ContactService } from './data-access/contact.service';
+import { SearchContactComponent } from './ui/components/search-contact/search-contact.component';
 
 @Component({
   selector: 'app-home',
