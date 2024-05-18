@@ -17,13 +17,21 @@
     padding: 0;
 }
 
-#contact h1 .form button[value="true"] {
+#contact h1 .form button.star-btn {
     color: #a4a4a4;
+    cursor: pointer;
 }
 
-#contact h1 .form button[value="true"]:hover,
-#contact h1 .form button[value="false"] {
+#contact h1 .form button.star-btn:hover {
     color: #eeb004;
+}
+
+button.edit-btn, button.delete-btn {
+    cursor: pointer;
+}
+
+button.delete-btn {
+    color: #f44250;
 }
 
 #contact {
