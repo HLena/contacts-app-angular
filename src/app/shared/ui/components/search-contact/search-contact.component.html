@@ -1,0 +1,40 @@
+<h1>Angular Contacts</h1>
+<div id="search-input">
+  <form action="">
+    <input
+      id="query"
+      aria-label="Search contacts"
+      type="search"
+      placeholder="Search"
+      [formControl]="searchInput"
+      (input)="searchContact()"
+    >
+    <!-- <div id="search-spinner" aria-hidden hidden="false"> </div> -->
+  </form>
+  <button>New</button>
+</div>
+<nav>
+  <ul>
+    @for (contact of contacts; track $index) {
+      <li >
+        <a
+          [routerLink]="['/contact', contact.id]"
+          [ngClass]="{'active': contact.id === selectedContactId}"
+          (click)="selectedContact(contact.id)"
+        >
+          {{contact.name}} {{contact.lastname}}
+          @if(contact.favorite) {
+            <span>★</span>
+          }
+        </a>
+      </li>
+    }
+
+    @if(contacts.length === 0) {
+      <p>
+        <i>No contacts</i>
+      </p>
+    }
+
+  </ul>
+</nav>
