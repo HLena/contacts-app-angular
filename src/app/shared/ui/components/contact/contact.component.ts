@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Contact } from '../../../interface/contact.interface';
 import { ContactService } from '../../../data-access/contact.service';
 import { switchMap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   providers: [ContactService],
@@ -26,5 +27,11 @@ export class ContactComponent implements OnInit {
         return this.contactService.getContactById(this.userId)
       })
     ).subscribe(contact => { this.contact = contact })
+  }
+
+  handleFavorite() {
+    if (this.contact) {
+      this.contact.favorite = !this.contact.favorite;
+    }
   }
 }

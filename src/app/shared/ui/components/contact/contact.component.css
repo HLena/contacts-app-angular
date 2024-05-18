@@ -26,6 +26,10 @@
     color: #eeb004;
 }
 
+#contact h1 .form button.star-btn.starred {
+    color: #eeb004;
+}
+
 button.edit-btn, button.delete-btn {
     cursor: pointer;
 }
