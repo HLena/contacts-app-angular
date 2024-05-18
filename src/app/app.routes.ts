@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './shared/ui/components/contact/contact.component';
 import { Error404Component } from './error404/error404.component';
+import { ContactEditComponent } from './home/contact-edit/contact-edit.component';
 
 export const routes: Routes = [
   {
@@ -11,6 +12,10 @@ export const routes: Routes = [
       {
         path:'contact/:id',
         component: ContactComponent
+      },
+      {
+        path:'contact/:id/edit',
+        component: ContactEditComponent
       }
     ]
   },
