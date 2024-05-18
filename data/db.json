@@ -6,7 +6,7 @@
       "name": "Alex",
       "lastname": "Anderson",
       "twitter_username": "@ralex1993",
-      "favorite": true,
+      "favorite": false,
       "note": "Friend from college."
     },
     {
@@ -87,14 +87,6 @@
       "twitter_username": "@_edmundhung",
       "favorite": false,
       "note": "Friend from college."
-    },
-    {
-      "id": "michael-jackson",
-      "avatar_url": "https://sessionize.com/image/fd45-400o400o2-fw91uCdGU9hFP334dnyVCr.jpg",
-      "name": "Michael",
-      "lastname": "Jackson",
-      "favorite": false,
-      "note": ""
     },
     {
       "id": "jon-jensen",
@@ -242,7 +234,8 @@
       "avatar_url": "https://sessionize.com/image/6faa-400o400o2-amseBRDkdg7wSK5tjsFDiG.jpg",
       "name": "Erick",
       "lastname": "Tamayo",
-      "twitter_username": "@ericktamayo"
+      "twitter_username": "@ericktamayo",
+      "favorite": false
     },
     {
       "id": "shane-walker",
