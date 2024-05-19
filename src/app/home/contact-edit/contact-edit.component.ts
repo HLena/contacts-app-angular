@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Contact } from '../../shared/interface/contact.interface';
-import { switchMap } from 'rxjs';
+import { catchError, of, switchMap } from 'rxjs';
 import { ContactService } from '../data-access/contact.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { IdGeneratorService } from '../../shared/services/id-generator.service';
 
 @Component({
   selector: 'app-contact-edit',
@@ -12,7 +13,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './contact-edit.component.html',
   styleUrl: './contact-edit.component.css',
-  providers: [ContactService]
+  providers: [ContactService, IdGeneratorService],
 })
 export class ContactEditComponent {
   userId: string = '';
@@ -22,7 +23,8 @@ export class ContactEditComponent {
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
-    private router: Router
+    private router: Router,
+    private idGeneratorService: IdGeneratorService
   ) {}
 
   ngOnInit() {
@@ -30,19 +32,36 @@ export class ContactEditComponent {
       .pipe(
         switchMap((params) => {
           this.userId = params.get('id') || '';
-          return this.contactService.getContactById(this.userId);
+          if (this.userId)
+            return this.contactService.getContactById(this.userId);
+          return of({} as Contact);
         })
       )
       .subscribe((contact) => {
         this.contact = contact;
-        this.formContactData = {...this.contact}
+        this.formContactData = { ...this.contact };
       });
   }
 
-  onSubmit(form: NgForm){
-    if(form.valid) {
-      this.contactService.updateContact(this.userId, this.formContactData).subscribe()
-      this.router.navigate(['/contact', this.userId])
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      if (this.userId) {
+        this.contactService
+          .updateContact(this.userId, this.formContactData)
+          .subscribe();
+        this.router.navigate(['/contact', this.userId]);
+      } else {
+        const newUser = {
+          ...this.formContactData,
+          id: this.idGeneratorService.generateRandomID(5)
+        };
+        this.contactService.createContact(newUser).subscribe({
+          next: (user) => {
+            console.log(user)
+            this.router.navigate(['/contact', user.id]);
+          },
+        });
+      }
     }
   }
 }

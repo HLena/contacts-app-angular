@@ -30,7 +30,7 @@
       <button [routerLink]="['/contact', contact?.id, 'edit']" class="edit-btn">
         Edit
       </button>
-      <button class="delete-btn">Delete</button>
+      <button (click)="handleDelete()" class="delete-btn">Delete</button>
     </div>
   </div>
 </div>

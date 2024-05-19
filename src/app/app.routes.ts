@@ -6,25 +6,29 @@ import { ContactEditComponent } from './home/contact-edit/contact-edit.component
 
 export const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: HomeComponent,
-    children:[
+    children: [
       {
-        path:'contact/:id',
-        component: ContactComponent
+        path: 'contact/create',
+        component: ContactEditComponent
       },
       {
-        path:'contact/:id/edit',
-        component: ContactEditComponent
-      }
-    ]
+        path: 'contact/:id',
+        component: ContactComponent,
+      },
+      {
+        path: 'contact/:id/edit',
+        component: ContactEditComponent,
+      },
+    ],
   },
   {
-    path:'404',
-    component: Error404Component
+    path: '404',
+    component: Error404Component,
   },
   {
     path: '**',
-    redirectTo: '404'
-  }
+    redirectTo: '404',
+  },
 ];
