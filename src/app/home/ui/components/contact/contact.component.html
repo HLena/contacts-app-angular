@@ -1,6 +1,6 @@
 <div id="contact">
     <div>
-        <img src="{{contact?.avatar_url}}" alt="{{contact?.name}}-{{contact?.lastname}}">
+        <img [src]="contact?.avatar_url || '/assets/default-avatar.png'" alt="{{contact?.name}}-{{contact?.lastname}}">
     </div>
     <div>
         <h1>

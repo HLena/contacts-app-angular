@@ -6,7 +6,7 @@
       "name": "Alex",
       "lastname": "Anderson",
       "twitter_username": "@ralex1993",
-      "favorite": false,
+      "favorite": true,
       "note": "Friend from college."
     },
     {
@@ -68,6 +68,7 @@
       "avatar_url": "https://sessionize.com/image/9273-400o400o2-3tyrUE3HjsCHJLU5aUJCja.jpg",
       "name": "Ryan",
       "lastname": "Florence",
+      "twitter_username": "@ryanflorence",
       "note": "Friend from college."
     },
     {
@@ -119,6 +120,7 @@
       "avatar_url": "https://sessionize.com/image/fb82-400o400o2-LbvwhTVMrYLDdN3z4iEFMp.jpeg",
       "name": "Brandon",
       "lastname": "Kish",
+      "twitter_username": "@brandonkish",
       "favorite": false,
       "note": ""
     },
@@ -192,7 +194,8 @@
       "id": "andrew-petersen",
       "avatar_url": "https://sessionize.com/image/2694-400o400o2-MYYTsnszbLKTzyqJV17w2q.png",
       "name": "Andrew",
-      "lastname": "Petersen"
+      "lastname": "Petersen",
+      "twitter_username": "@andrewpetersen"
     },
     {
       "id": "monica-powell",
@@ -243,6 +246,13 @@
       "name": "Shane",
       "lastname": "Walker",
       "twitter_username": "@swalker326"
+    },
+    {
+      "id": "james-wilson",
+      "name": "James",
+      "lastname": "Wilson",
+      "twitter_username": "@jameswilson",
+      "favorite": false
     }
   ]
 }
