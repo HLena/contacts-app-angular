@@ -13,7 +13,7 @@ import { IdGeneratorService } from '../../shared/services/id-generator.service';
   imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './contact-edit.component.html',
   styleUrl: './contact-edit.component.css',
-  providers: [ContactService, IdGeneratorService],
+  providers: [IdGeneratorService],
 })
 export class ContactEditComponent {
   userId: string = '';

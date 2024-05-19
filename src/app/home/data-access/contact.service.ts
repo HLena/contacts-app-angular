@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Contact } from '../../shared/interface/contact.interface';
 import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, tap, catchError, map, of, switchMap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
@@ -20,22 +20,23 @@ export class ContactService {
   private loadInitialContacts(): void {
     this.getContacts().subscribe({
       next: contacts => this.contactsSubject.next(contacts),
-      error: err => console.error('Failed to load initial contacts', err)
+      error: err => console.error('Failed to load all contacts', err)
     });
   }
   getContacts():Observable<Contact[]>{
-    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`).pipe(
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts?_sort=name`).pipe(
       catchError(this.handleError<Contact[]>(`Failed to get the list of contacts`, []))
     )
   }
 
-  searchContactByName(query: string): Observable<Contact[]> {
-    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`).pipe(
-      map((contacts) =>
-        contacts.filter(({ name, lastname }) => {
+  searchContactByName(query: string): Observable<Contact[]>{
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts?_sort=name`)
+      .pipe(
+        map((contacts) => contacts.filter(({name, lastname}) => {
           const fullname = `${name} ${lastname}`;
           return fullname.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-        }))
+        })),
+        catchError(this.handleError<Contact[]>('Failed to search a contact by name', []))
       )
   }
 
@@ -57,28 +58,23 @@ export class ContactService {
   }
 
   createContact(body: Contact): Observable<Contact> {
-    return this.http.post<Contact>(`${this.baseUrl}/contacts`, body);
+    return this.http.post<Contact>(`${this.baseUrl}/contacts`, body).pipe(
+      tap(() => { this.loadInitialContacts()}),
+      catchError(this.handleError<Contact>('Failed to create a new contact'))
+    );
   }
 
   updateContact(id: string, body: Partial<Contact>): Observable<Contact> {
     return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body).pipe(
-      tap(updatedContact => {
-        const updatedContacts = this.contactsSubject.value.map(
-          current => current.id === updatedContact.id ? updatedContact: current
-        );
-        this.contactsSubject.next(updatedContacts)
-      }),
+      tap(() => { this.loadInitialContacts()}),
       catchError(this.handleError<Contact>(`Failed to update the contact with the id=${id}`))
     )
   }
 
   deleteContact(id: string):Observable<Contact>{
     return this.http.delete<Contact>(`${this.baseUrl}/contacts/${id}`).pipe(
-      tap( deletedContact => {
-        const updatedContacts = this.contactsSubject.value.filter(
-          current => current.id !== deletedContact.id
-        );
-        this.contactsSubject.next(updatedContacts)
+      tap(() => {
+        this.loadInitialContacts()
       }),
       catchError(this.handleError<Contact>(`Failed to delete the contact with the id=${id}`))
     );

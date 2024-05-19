@@ -13,7 +13,7 @@
 <nav>
   <ul>
     @for (contact of contacts; track $index) {
-      <li >
+      <li  [id]="'contact-' + contact.id">
         <a
           [routerLink]="['/contact', contact.id]"
           [ngClass]="{'active': contact.id === selectedContactId}"
