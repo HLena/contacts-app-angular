@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Contact } from '../../shared/interface/contact.interface';
-import { catchError, of, switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { ContactService } from '../data-access/contact.service';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -40,7 +40,7 @@ export class ContactEditComponent {
       )
       .subscribe((contact) => {
         this.contact = contact;
-        if(this.contact) this.formContactData = { ...this.contact };
+        if (this.contact) this.formContactData = { ...this.contact };
       });
   }
 
@@ -66,18 +66,16 @@ export class ContactEditComponent {
           },
         });
       }
-    } else {
-      console.log('something when wrong');
     }
   }
 
   generateNewUserId(name: string, lastname: string): string {
-    return `${name.trim()}-${lastname.trim()}-${this.idGeneratorService.generateRandomID(
-      2
-    )}`;
+    return `${name.trim().toLowerCase()}-${lastname
+      .trim()
+      .toLowerCase()}-${this.idGeneratorService.generateRandomID(2)}`;
   }
 
   handleCancel() {
-    this.location.back()
+    this.location.back();
   }
 }

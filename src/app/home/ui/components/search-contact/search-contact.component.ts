@@ -1,4 +1,4 @@
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactService } from '../../../data-access/contact.service';
@@ -25,7 +25,7 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   isCreating: boolean = false;
   private subscription: Subscription = new Subscription();
 
-  constructor(private contactService: ContactService, private router: Router) {}
+  constructor(private contactService: ContactService) {}
 
   ngOnInit(): void {
     this.subscription.add(this.setupSearchSubscription());
