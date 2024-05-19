@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../../../../shared/interface/contact.interface';
 import { ContactService } from '../../../data-access/contact.service';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -29,11 +29,9 @@ export class ContactComponent implements OnInit {
           this.userId = params.get('id') || '';
           this.contactService.selectContact(this.userId)
           return this.contactService.getContactById(this.userId);
-        })
+        }),
       )
-      .subscribe((contact) => {
-        this.contact = contact;
-      });
+      .subscribe((contact) => { this.contact = contact });
   }
 
   handleFavorite() {

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {  RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './home/data-access/contact.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
