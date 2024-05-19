@@ -46,7 +46,7 @@
       "note": "Friend from college."
     },
     {
-      "id": "kent c.-dodds",
+      "id": "kent-c-dodds",
       "avatar_url": "https://sessionize.com/image/5578-400o400o2-BMT43t5kd2U1XstaNnM6Ax.jpg",
       "name": "Kent C.",
       "lastname": "Dodds",
@@ -252,7 +252,8 @@
       "name": "James",
       "lastname": "Wilson",
       "twitter_username": "@jameswilson",
-      "favorite": false
+      "favorite": false,
+      "note": "Some notes."
     }
   ]
 }
