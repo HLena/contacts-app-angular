@@ -53,15 +53,26 @@ export class ContactEditComponent {
       } else {
         const newUser = {
           ...this.formContactData,
-          id: this.idGeneratorService.generateRandomID(5)
+          id: this.generateNewUserId(
+            this.formContactData.name,
+            this.formContactData.lastname
+          ),
         };
         this.contactService.createContact(newUser).subscribe({
           next: (user) => {
-            console.log(user)
+            console.log(user);
             this.router.navigate(['/contact', user.id]);
           },
         });
       }
+    } else {
+      console.log('something when wrong');
     }
+  }
+
+  generateNewUserId(name: string, lastname: string): string {
+    return `${name.trim()}-${lastname.trim()}-${this.idGeneratorService.generateRandomID(
+      2
+    )}`;
   }
 }

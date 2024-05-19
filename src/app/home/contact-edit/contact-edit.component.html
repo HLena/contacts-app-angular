@@ -10,11 +10,15 @@
         placeholder="First"
         name="name"
         [(ngModel)]="formContactData.name"
+        required
+        [maxlength]="15"
       />
       <input
         placeholder="Last"
         name="lastname"
         [(ngModel)]="formContactData.lastname"
+        required
+        [maxlength]="15"
       />
     </div>
   </div>
@@ -24,6 +28,9 @@
       placeholder="@jack"
       name="twitter_username"
       [(ngModel)]="formContactData.twitter_username"
+      required
+      minlength="3"
+      maxlength="20"
     />
   </label>
   <label class="row">
