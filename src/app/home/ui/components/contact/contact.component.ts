@@ -13,7 +13,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
+
 export class ContactComponent implements OnInit, OnDestroy {
+
   userId: string = '';
   contact: Contact | undefined;
   private subscription = new Subscription();

@@ -11,6 +11,7 @@ import { ContactService } from './home/data-access/contact.service';
   styleUrl: './app.component.css',
   providers: [ContactService]
 })
+
 export class AppComponent {
   title = 'contacts-app-angular';
 }
