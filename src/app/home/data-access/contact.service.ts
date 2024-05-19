@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Contact } from '../../shared/interface/contact.interface';
 import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
@@ -26,8 +26,19 @@ export class ContactService {
       )
     );
   }
-  getContactById(id: string): Observable<Contact> {
-    return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`);
+  getContactById(id: string):Observable<Contact | undefined>{
+    return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`).pipe(
+      catchError((error) => {
+        if (error.status === 404) {
+          console.error('Contact not found: ', error);
+          return of(undefined);
+        }
+        else {
+          const err = new Error('An unexpected error happened.');
+          return throwError(() => err);
+        }
+      })
+    );
   }
 
   createContact(body: Contact): Observable<Contact> {

@@ -39,7 +39,7 @@ export class ContactEditComponent {
       )
       .subscribe((contact) => {
         this.contact = contact;
-        this.formContactData = { ...this.contact };
+        if(this.contact) this.formContactData = { ...this.contact };
       });
   }
 
