@@ -40,8 +40,6 @@
   border: 1px solid red;
 }
 
-/* ng-dirty ng-invalid ng-touched */
-
 #contact-form .row textarea {
   width: 100%;
   height: 10rem;

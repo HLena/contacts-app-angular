@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from '../shared/interface/contact.interface';
-import { ContactService } from '../shared/data-access/contact.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
