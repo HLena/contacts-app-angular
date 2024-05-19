@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactService } from '../../../data-access/contact.service';
 import { Contact } from '../../../../shared/interface/contact.interface';
@@ -25,7 +25,7 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   isCreating: boolean = false;
   private subscription: Subscription = new Subscription();
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService, private elRef: ElementRef) {}
 
   ngOnInit(): void {
     this.subscription.add(this.setupSearchSubscription());
@@ -55,6 +55,10 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   private setupSelectedContactSubscription(): Subscription {
     return this.contactService.selectedContactId$.subscribe((contactId) => {
       this.selectedContactId = contactId;
+      console.log(contactId, 'id contact')
+      if (contactId) {
+        this.scrollToContact(contactId);
+      }
     });
   }
 
@@ -68,6 +72,15 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   selectedContact(contactId: string): void {
     this.selectedContactId = contactId;
     this.contactService.selectContact(contactId);
+  }
+
+  private scrollToContact(contactId: string): void {
+    setTimeout(() => {
+      const element = this.elRef.nativeElement.querySelector(`#contact-${contactId}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 300);
   }
 
   ngOnDestroy(): void {

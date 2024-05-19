@@ -93,6 +93,7 @@ ul {
 
 li {
   margin: 0.25rem 0;
+  scroll-margin-top: .5rem;
 }
 
 nav a {
