@@ -52,7 +52,7 @@
       />
       <div
         *ngIf="
-          twitterCtrl.invalid && (twitterCtrl.dirty || twitterCtrl.touched)
+          twitterCtrl.invalid && (twitterCtrl.dirty && twitterCtrl.touched)
         "
       >
         <small class="error" *ngIf="twitterCtrl.hasError('required')"
@@ -77,7 +77,7 @@
     <textarea name="notes" [(ngModel)]="formContactData.note"> </textarea>
   </label>
   <div class="form-actions">
-    <button type="submit">Save</button>
+    <button [disabled]="contactForm.invalid" type="submit">Save</button>
     <button (click)="handleCancel()" class="cancel-button" type="button">
       Cancel
     </button>

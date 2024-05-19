@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ContactService } from '../../../data-access/contact.service';
 import { Contact } from '../../../../shared/interface/contact.interface';
 import { CommonModule } from '@angular/common';
@@ -20,8 +20,9 @@ export class SearchContactComponent {
   public contacts: Contact[] = [];
   public selectedContactId: null | string = null;
   private searchTerms = new BehaviorSubject<string>('');
+  isCreating: boolean = false
 
-  constructor(private contactService: ContactService){}
+  constructor(private contactService: ContactService, private router: Router){}
 
   ngOnInit(): void {
     this.searchTerms.pipe(
@@ -31,6 +32,10 @@ export class SearchContactComponent {
     ).subscribe(
       results => this.contacts = results
     )
+
+    this.router.events.subscribe(() => {
+      this.isCreating = this.router.url.includes("create")
+    })
   }
 
   searchContact(term: string): Observable<Contact[]>{
