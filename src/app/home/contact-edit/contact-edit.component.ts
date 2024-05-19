@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Contact } from '../../shared/interface/contact.interface';
 import { catchError, of, switchMap } from 'rxjs';
 import { ContactService } from '../data-access/contact.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { IdGeneratorService } from '../../shared/services/id-generator.service';
 
@@ -24,7 +24,8 @@ export class ContactEditComponent {
     private route: ActivatedRoute,
     private contactService: ContactService,
     private router: Router,
-    private idGeneratorService: IdGeneratorService
+    private idGeneratorService: IdGeneratorService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -74,5 +75,9 @@ export class ContactEditComponent {
     return `${name.trim()}-${lastname.trim()}-${this.idGeneratorService.generateRandomID(
       2
     )}`;
+  }
+
+  handleCancel() {
+    this.location.back()
   }
 }
