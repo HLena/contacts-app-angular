@@ -14,7 +14,6 @@ export class ContactService {
 
   constructor(private http: HttpClient) {
     this.loadInitialContacts();
-
   }
 
   private loadInitialContacts(): void {
@@ -59,6 +58,13 @@ export class ContactService {
   }
 
   deleteContact(id: string):Observable<Contact>{
-    return this.http.delete<Contact>(`${this.baseUrl}/contacts/${id}`);
+    return this.http.delete<Contact>(`${this.baseUrl}/contacts/${id}`).pipe(
+      tap( deletedContact => {
+        const updatedContacts = this.contactsSubject.value.filter(
+          current => current.id !== deletedContact.id
+        );
+        this.contactsSubject.next(updatedContacts)
+      })
+    );
   }
 }
