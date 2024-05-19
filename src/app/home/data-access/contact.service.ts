@@ -10,7 +10,10 @@ export class ContactService {
 
   private baseUrl: string = environments.baseUrl;
   private contactsSubject = new BehaviorSubject<Contact[]>([]);
+  private selectedContactIdSubject = new BehaviorSubject<string | null>(null);
+
   contacts$ = this.contactsSubject.asObservable();
+  selectedContactId$ = this.selectedContactIdSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.loadInitialContacts();
@@ -66,5 +69,9 @@ export class ContactService {
         this.contactsSubject.next(updatedContacts)
       })
     );
+  }
+
+  selectContact(contactId: string): void {
+    this.selectedContactIdSubject.next(contactId);
   }
 }

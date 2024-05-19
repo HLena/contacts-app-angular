@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactService } from '../../../data-access/contact.service';
 import { Contact } from '../../../../shared/interface/contact.interface';
@@ -12,7 +12,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './search-contact.component.html',
   styleUrl: './search-contact.component.css',
 })
-export class SearchContactComponent {
+
+export class SearchContactComponent implements OnInit, OnDestroy{
 
   public contacts: Contact[] = [];
   public selectedContactId: null | string = null;
@@ -38,8 +39,13 @@ export class SearchContactComponent {
       })
     )
 
-    const selectedContactId = localStorage.getItem('selectedContactId');
-    if(selectedContactId) this.selectedContact(selectedContactId)
+    this.subscription.add(this.setupSelectedContactSubscription());
+  }
+
+  private setupSelectedContactSubscription(): Subscription {
+    return this.contactService.selectedContactId$.subscribe(
+      contactId => { this.selectedContactId = contactId }
+    )
   }
 
   onSearchChange(event: Event){
@@ -51,6 +57,7 @@ export class SearchContactComponent {
 
   selectedContact(contactId: string):void {
     this.selectedContactId = contactId;
+    this.contactService.selectContact(contactId);
   }
 
   ngOnDestroy(): void {
