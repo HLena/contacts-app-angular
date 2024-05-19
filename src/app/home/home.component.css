@@ -21,3 +21,9 @@ app-search-contact {
   padding: 2rem 4rem;
   width: 100%;
 }
+
+img.home-app-icon {
+  margin: 0 auto;
+  display: block;
+  width: 250px;
+}
