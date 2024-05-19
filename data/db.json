@@ -13,7 +13,7 @@
       "id": "giovanni-benussi",
       "avatar_url": "https://sessionize.com/image/08be-400o400o2-WtYGFFR1ZUJHL9tKyVBNPV.jpg",
       "name": "Giovanni",
-      "lastname": "Benussi",
+      "lastname": "Benussiii",
       "twitter_username": "@giovannibenussi",
       "favorite": false,
       "note": "Gym buddy."
@@ -22,19 +22,10 @@
       "id": "paul-bratslavsky",
       "avatar_url": "https://sessionize.com/image/feba-400o400o2-R4GE7eqegJNFf3cQ567obs.jpg",
       "name": "Paul",
-      "lastname": "Bratslavsky",
+      "lastname": "Bratslavskyy",
       "twitter_username": "@codingthirty",
       "favorite": false,
       "note": "Gym buddy."
-    },
-    {
-      "id": "pedro-cattori",
-      "avatar_url": "https://sessionize.com/image/c315-400o400o2-spjM5A6VVfVNnQsuwvX3DY.jpg",
-      "name": "Pedro",
-      "lastname": "Cattori",
-      "twitter_username": "@pcattori",
-      "favorite": false,
-      "note": "Friend from college."
     },
     {
       "id": "christopher-chedeau",
@@ -91,7 +82,7 @@
     {
       "id": "jon-jensen",
       "avatar_url": "https://sessionize.com/image/6644-400o400o2-aHnGHb5Pdu3D32MbfrnQbj.jpg",
-      "name": "Jon",
+      "name": "Jonn",
       "lastname": "Jensen",
       "twitter_username": "@jenseng",
       "favorite": false,
@@ -243,6 +234,18 @@
       "name": "Shane",
       "lastname": "Walker",
       "twitter_username": "@swalker326"
+    },
+    {
+      "id": "Alex-Fernandez-ob",
+      "name": "Alex",
+      "lastname": "Fernandez",
+      "twitter_username": "@afer"
+    },
+    {
+      "id": "alex-fernandez-fW",
+      "name": "Alex",
+      "lastname": "Fernandez",
+      "twitter_username": "@alexgf"
     }
   ]
 }
