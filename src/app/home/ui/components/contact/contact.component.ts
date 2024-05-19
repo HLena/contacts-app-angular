@@ -28,6 +28,7 @@ export class ContactComponent implements OnInit {
       .pipe(
         switchMap((params) => {
           this.userId = params.get('id') || '';
+          localStorage.setItem('selectedContactId', this.userId)
           return this.contactService.getContactById(this.userId);
         })
       )
