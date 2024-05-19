@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contact.component.css',
   providers: [ContactService],
 })
+
 export class ContactComponent implements OnInit {
   userId: string = '';
   contact: Contact | undefined;
