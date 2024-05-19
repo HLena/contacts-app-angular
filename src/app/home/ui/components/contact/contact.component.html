@@ -1,6 +1,12 @@
 <div id="contact">
     @if (!contact) {
-        <p>No contact found.</p>
+        <div>
+            <img class="bg-none" src="/assets/contact-not-found.png" alt="contact-not-found">
+        </div>
+        <div>
+            <p>Oops! No contact found.</p>
+            <button class="edit-btn" [routerLink]="['/contact','create']">Add a new contact</button>
+        </div>
     } @else {
         <div>
             <img [src]="contact.avatar_url || '/assets/default-avatar.png'"

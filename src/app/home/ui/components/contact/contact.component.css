@@ -120,3 +120,7 @@ button.delete-btn {
 #contact .form label textarea {
     flex-grow: 2;
 }
+
+#contact div img.bg-none {
+    background: none;
+}
