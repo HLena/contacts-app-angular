@@ -91,7 +91,7 @@
     {
       "id": "jon-jensen",
       "avatar_url": "https://sessionize.com/image/6644-400o400o2-aHnGHb5Pdu3D32MbfrnQbj.jpg",
-      "name": "Jon",
+      "name": "Jonn",
       "lastname": "Jensen",
       "twitter_username": "@jenseng",
       "favorite": false,
@@ -243,6 +243,12 @@
       "name": "Shane",
       "lastname": "Walker",
       "twitter_username": "@swalker326"
+    },
+    {
+      "id": "Alex-Fernandez-ob",
+      "name": "Alex",
+      "lastname": "Fernandez",
+      "twitter_username": "@afer"
     }
   ]
 }
