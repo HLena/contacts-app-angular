@@ -77,7 +77,7 @@
       "name": "Arisa",
       "lastname": "Fukuzaki",
       "twitter_username": "@arisa_dev",
-      "favorite": false,
+      "favorite": true,
       "note": "Met at the conference."
     },
     {
@@ -86,7 +86,7 @@
       "name": "Edmund",
       "lastname": "Hung",
       "twitter_username": "@_edmundhung",
-      "favorite": false,
+      "favorite": true,
       "note": "Friend from college."
     },
     {
