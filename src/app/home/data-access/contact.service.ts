@@ -26,13 +26,13 @@ export class ContactService {
     });
   }
   getContacts():Observable<Contact[]>{
-    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`).pipe(
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts?_sort=name`).pipe(
       catchError(this.handleError<Contact[]>(`Failed to get the list of contacts`, []))
     )
   }
 
   searchContactByName(query: string): Observable<Contact[]>{
-    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`)
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts?_sort=name`)
       .pipe(
         map((contacts) => contacts.filter(({name, lastname}) => {
           const fullname = `${name} ${lastname}`;
