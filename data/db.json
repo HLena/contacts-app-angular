@@ -6,7 +6,7 @@
       "name": "Alex",
       "lastname": "Anderson",
       "twitter_username": "@ralex1993",
-      "favorite": true,
+      "favorite": false,
       "note": "Friend from college."
     },
     {
@@ -46,7 +46,7 @@
       "note": "Friend from college."
     },
     {
-      "id": "kent-c-dodds",
+      "id": "kent c.-dodds",
       "avatar_url": "https://sessionize.com/image/5578-400o400o2-BMT43t5kd2U1XstaNnM6Ax.jpg",
       "name": "Kent C.",
       "lastname": "Dodds",
@@ -68,7 +68,6 @@
       "avatar_url": "https://sessionize.com/image/9273-400o400o2-3tyrUE3HjsCHJLU5aUJCja.jpg",
       "name": "Ryan",
       "lastname": "Florence",
-      "twitter_username": "@ryanflorence",
       "note": "Friend from college."
     },
     {
@@ -77,7 +76,7 @@
       "name": "Arisa",
       "lastname": "Fukuzaki",
       "twitter_username": "@arisa_dev",
-      "favorite": true,
+      "favorite": false,
       "note": "Met at the conference."
     },
     {
@@ -86,7 +85,7 @@
       "name": "Edmund",
       "lastname": "Hung",
       "twitter_username": "@_edmundhung",
-      "favorite": true,
+      "favorite": false,
       "note": "Friend from college."
     },
     {
@@ -120,7 +119,6 @@
       "avatar_url": "https://sessionize.com/image/fb82-400o400o2-LbvwhTVMrYLDdN3z4iEFMp.jpeg",
       "name": "Brandon",
       "lastname": "Kish",
-      "twitter_username": "@brandonkish",
       "favorite": false,
       "note": ""
     },
@@ -194,8 +192,7 @@
       "id": "andrew-petersen",
       "avatar_url": "https://sessionize.com/image/2694-400o400o2-MYYTsnszbLKTzyqJV17w2q.png",
       "name": "Andrew",
-      "lastname": "Petersen",
-      "twitter_username": "@andrewpetersen"
+      "lastname": "Petersen"
     },
     {
       "id": "monica-powell",
@@ -246,14 +243,6 @@
       "name": "Shane",
       "lastname": "Walker",
       "twitter_username": "@swalker326"
-    },
-    {
-      "id": "james-wilson",
-      "name": "James",
-      "lastname": "Wilson",
-      "twitter_username": "@jameswilson",
-      "favorite": false,
-      "note": "Some notes."
     }
   ]
 }

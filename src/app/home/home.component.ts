@@ -6,7 +6,7 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, SearchContactComponent],
+  imports: [SearchContactComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
