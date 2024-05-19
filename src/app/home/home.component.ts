@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { SearchContactComponent } from './ui/components/search-contact/search-contact.component';
 import { filter } from 'rxjs';
@@ -6,7 +8,7 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, SearchContactComponent],
+  imports: [RouterModule, HttpClientModule, ContactEditComponent, SearchContactComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

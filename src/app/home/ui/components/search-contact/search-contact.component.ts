@@ -1,55 +1,76 @@
-import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ContactService } from '../../../data-access/contact.service';
 import { Contact } from '../../../../shared/interface/contact.interface';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, Observable,  debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Subscription,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-search-contact',
   standalone: true,
-  imports: [RouterModule, HttpClientModule, CommonModule, FormsModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './search-contact.component.html',
   styleUrl: './search-contact.component.css',
-  providers: [ContactService]
 })
-export class SearchContactComponent {
-
+export class SearchContactComponent implements OnInit, OnDestroy {
   public contacts: Contact[] = [];
   public selectedContactId: null | string = null;
   private searchTerms = new BehaviorSubject<string>('');
+  isCreating: boolean = false;
+  private subscription: Subscription = new Subscription();
 
-  constructor(private contactService: ContactService){}
+  constructor(private contactService: ContactService) {}
 
   ngOnInit(): void {
-    this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap(term => this.searchContact(term))
-    ).subscribe(
-      results => this.contacts = results
-    )
+    this.subscription.add(this.setupSearchSubscription());
+    this.subscription.add(this.setupContactsSubscription());
+    this.subscription.add(this.setupSelectedContactSubscription());
   }
 
-  searchContact(term: string): Observable<Contact[]>{
-    if(term === '') {
-      return this.contactService.getContacts();
-    }
-    return this.contactService.searchContactByName(term);
-
+  private setupSearchSubscription(): Subscription {
+    return this.searchTerms
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((term) => {
+          this.contactService.searchContact(term);
+          return this.contactService.contacts$;
+        })
+      )
+      .subscribe((contacts) => (this.contacts = contacts));
   }
 
-  onSearchChange(event: Event){
+  private setupContactsSubscription(): Subscription {
+    return this.contactService.contacts$.subscribe((contacts) => {
+      this.contacts = contacts;
+    });
+  }
+
+  private setupSelectedContactSubscription(): Subscription {
+    return this.contactService.selectedContactId$.subscribe((contactId) => {
+      this.selectedContactId = contactId;
+    });
+  }
+
+  onSearchChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
-      this.searchTerms.next(inputElement.value);
+      this.searchTerms.next(inputElement.value.trim());
     }
   }
 
-  selectedContact(contactId: string):void {
+  selectedContact(contactId: string): void {
     this.selectedContactId = contactId;
+    this.contactService.selectContact(contactId);
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
