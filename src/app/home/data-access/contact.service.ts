@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Contact } from '../../shared/interface/contact.interface';
 import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
@@ -48,7 +48,14 @@ export class ContactService {
   }
 
   updateContact(id: string, body: Partial<Contact>):Observable<Contact>{
-    return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body);
+    return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body).pipe(
+      tap(updatedContact => {
+        const updatedContacts = this.contactsSubject.value.map(
+          current => current.id === updatedContact.id ? updatedContact: current
+        );
+        this.contactsSubject.next(updatedContacts)
+      })
+    )
   }
 
   deleteContact(id: string):Observable<Contact>{
