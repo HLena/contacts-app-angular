@@ -72,7 +72,7 @@ export class ContactEditComponent {
   generateNewUserId(name: string, lastname: string): string {
     return `${name.trim().toLowerCase()}-${lastname
       .trim()
-      .toLowerCase()}-${this.idGeneratorService.generateRandomID(2)}`;
+      .toLowerCase()}-${this.idGeneratorService.generateRandomID(4)}`;
   }
 
   handleCancel() {
