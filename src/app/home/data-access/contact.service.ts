@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Contact } from '../../shared/interface/contact.interface';
 import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap, catchError, map, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, tap, catchError, map, of } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
@@ -20,10 +20,15 @@ export class ContactService {
   }
 
   private loadInitialContacts(): void {
-    this.getContacts().subscribe(contacts => this.contactsSubject.next(contacts));
+    this.getContacts().subscribe({
+      next: contacts => this.contactsSubject.next(contacts),
+      error: err => console.error('Failed to load initial contacts', err)
+    });
   }
   getContacts():Observable<Contact[]>{
-    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`)
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`).pipe(
+      catchError(this.handleError<Contact[]>(`Failed to get the list of contacts`, []))
+    )
   }
 
   searchContactByName(query: string): Observable<Contact[]>{
@@ -32,7 +37,8 @@ export class ContactService {
         map((contacts) => contacts.filter(({name, lastname}) => {
           const fullname = `${name} ${lastname}`;
           return fullname.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-        }))
+        })),
+        catchError(this.handleError<Contact[]>('Failed to search a contact by name', []))
       )
   }
 
@@ -40,23 +46,16 @@ export class ContactService {
     if(term === '') {
       this.loadInitialContacts()
     } else {
-      this.searchContactByName(term).subscribe(contacts => this.contactsSubject.next(contacts));
+      this.searchContactByName(term).subscribe({
+        next: contacts => this.contactsSubject.next(contacts),
+        error: err => console.error('Failed to seach contacts', err)
+      });
     }
-
   }
 
   getContactById(id: string):Observable<Contact | undefined>{
     return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`).pipe(
-      catchError((error) => {
-        if (error.status === 404) {
-          console.error('Contact not found: ', error);
-          return of(undefined);
-        }
-        else {
-          const err = new Error('An unexpected error happened.');
-          return throwError(() => err);
-        }
-      })
+      catchError(this.handleError<Contact>(`Failed to find a contact with the id=${id}`))
     );
   }
 
@@ -67,7 +66,8 @@ export class ContactService {
           current => current.id === updatedContact.id ? updatedContact: current
         );
         this.contactsSubject.next(updatedContacts)
-      })
+      }),
+      catchError(this.handleError<Contact>(`Failed to update the contact with the id=${id}`))
     )
   }
 
@@ -78,11 +78,19 @@ export class ContactService {
           current => current.id !== deletedContact.id
         );
         this.contactsSubject.next(updatedContacts)
-      })
+      }),
+      catchError(this.handleError<Contact>(`Failed to delete the contact with the id=${id}`))
     );
   }
 
   selectContact(contactId: string): void {
     this.selectedContactIdSubject.next(contactId);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation}: ${error.message}`);
+      return of(result as T);
+    };
   }
 }
