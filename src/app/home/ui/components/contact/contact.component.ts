@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Contact } from '../../../../shared/interface/contact.interface';
 import { ContactService } from '../../../data-access/contact.service';
 import { switchMap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })

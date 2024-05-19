@@ -4,10 +4,8 @@ import { environments } from '../../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap, catchError, map, of } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-
+@Injectable({ providedIn: 'root' })
 export class ContactService {
-
   private baseUrl: string = environments.baseUrl;
   private contactsSubject = new BehaviorSubject<Contact[]>([]);
   private selectedContactIdSubject = new BehaviorSubject<string | null>(null);
@@ -59,7 +57,11 @@ export class ContactService {
     );
   }
 
-  updateContact(id: string, body: Partial<Contact>):Observable<Contact>{
+  createContact(body: Contact): Observable<Contact> {
+    return this.http.post<Contact>(`${this.baseUrl}/contacts`, body);
+  }
+
+  updateContact(id: string, body: Partial<Contact>): Observable<Contact> {
     return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body).pipe(
       tap(updatedContact => {
         const updatedContacts = this.contactsSubject.value.map(
