@@ -30,13 +30,8 @@ export class ContactComponent implements OnInit {
           this.userId = params.get('id') || '';
           return this.contactService.getContactById(this.userId);
         }),
-        catchError(() => {
-          return [];
-        })
       )
-      .subscribe((contact) => {
-        this.contact = contact;
-      });
+      .subscribe((contact) => { this.contact = contact });
   }
 
   handleFavorite() {
