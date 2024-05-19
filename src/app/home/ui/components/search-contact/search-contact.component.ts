@@ -1,19 +1,16 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactService } from '../../../data-access/contact.service';
 import { Contact } from '../../../../shared/interface/contact.interface';
+import { BehaviorSubject,  Subscription,  debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, Observable,  Subscription,  debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-search-contact',
   standalone: true,
-  imports: [RouterModule, HttpClientModule, CommonModule, FormsModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './search-contact.component.html',
   styleUrl: './search-contact.component.css',
-  providers: [ContactService]
 })
 export class SearchContactComponent {
 
