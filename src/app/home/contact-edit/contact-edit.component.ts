@@ -6,11 +6,12 @@ import { ContactService } from '../data-access/contact.service';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { IdGeneratorService } from '../../shared/services/id-generator.service';
+import { UsernameValidatorDirective } from '../directives/username-validator.directive';
 
 @Component({
   selector: 'app-contact-edit',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule],
+  imports: [RouterLink, CommonModule, FormsModule, UsernameValidatorDirective],
   templateUrl: './contact-edit.component.html',
   styleUrl: './contact-edit.component.css',
   providers: [IdGeneratorService],
@@ -61,7 +62,6 @@ export class ContactEditComponent {
         };
         this.contactService.createContact(newUser).subscribe({
           next: (user) => {
-            console.log(user);
             this.router.navigate(['/contact', user.id]);
           },
         });
