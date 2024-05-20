@@ -1,6 +1,15 @@
 {
   "contacts": [
     {
+      "id": "alex-anderson",
+      "avatar_url": "https://sessionize.com/image/df38-400o400o2-JwbChVUj6V7DwZMc9vJEHc.jpg",
+      "name": "Alex",
+      "lastname": "Anderson",
+      "twitter_username": "ralex1993",
+      "favorite": false,
+      "note": "Friend from college."
+    },
+    {
       "id": "giovanni-benussi",
       "avatar_url": "https://sessionize.com/image/08be-400o400o2-WtYGFFR1ZUJHL9tKyVBNPV.jpg",
       "name": "Giovanni",
@@ -50,8 +59,16 @@
       "avatar_url": "https://sessionize.com/image/9273-400o400o2-3tyrUE3HjsCHJLU5aUJCja.jpg",
       "name": "Ryan",
       "lastname": "Florence",
-      "note": "Friend from college.",
-      "twitter_username": "ryan23"
+      "note": "Friend from college."
+    },
+    {
+      "id": "arisa-fukuzaki",
+      "avatar_url": "https://sessionize.com/image/fcda-400o400o2-XiYRtKK5Dvng5AeyC8PiUA.png",
+      "name": "Arisa",
+      "lastname": "Fukuzaki",
+      "twitter_username": "arisa_dev",
+      "favorite": false,
+      "note": "Met at the conference."
     },
     {
       "id": "edmund-hung",
@@ -92,11 +109,11 @@
     {
       "id": "brandon-kish",
       "avatar_url": "https://sessionize.com/image/fb82-400o400o2-LbvwhTVMrYLDdN3z4iEFMp.jpeg",
-      "name": "Brandon",
+      "name": "Randal",
       "lastname": "Kish",
       "favorite": false,
       "note": "",
-      "twitter_username": "brandon_kish12"
+      "twitter_username": "randal_kish"
     },
     {
       "id": "andre-landgraf",
@@ -153,7 +170,7 @@
       "avatar_url": "https://sessionize.com/image/5636-400o400o2-TWgi8vELMFoB3hB9uPw62d.jpg",
       "name": "Ashley",
       "lastname": "Narcisse",
-      "twitter_username": "darkfadr_34_23",
+      "twitter_username": "_darkfadr",
       "favorite": false,
       "note": ""
     },
@@ -219,8 +236,7 @@
       "avatar_url": "https://sessionize.com/image/a9fc-400o400o2-JHBnWZRoxp7QX74Hdac7AZ.jpg",
       "name": "Shane",
       "lastname": "Walker",
-      "twitter_username": "swalker_326",
-      "favorite": true
+      "twitter_username": "swalker326"
     },
     {
       "id": "alex-fernandez-fW",
@@ -232,9 +248,8 @@
       "id": "pedro-diaz-N5eZ",
       "name": "Pedrito",
       "lastname": "Diaz",
-      "twitter_username": "pedro_43_diaz",
-      "favorite": true,
-      "avatar_url": "https://img.freepik.com/foto-gratis/joven-hombre-g…-mirando-camara-persona-positiva_839833-12963.jpg"
+      "twitter_username": "juan",
+      "favorite": true
     }
   ]
 }
