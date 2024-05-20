@@ -85,16 +85,17 @@
       "name": "Jonn",
       "lastname": "Jensen",
       "twitter_username": "@jenseng",
-      "favorite": false,
+      "favorite": true,
       "note": ""
     },
     {
       "id": "cat-johnson",
       "avatar_url": "https://sessionize.com/image/7594-400o400o2-hWtdCjbdFdLgE2vEXBJtyo.jpg",
-      "name": "Cat",
+      "name": "Catt",
       "lastname": "Johnson",
       "favorite": false,
-      "note": ""
+      "note": "",
+      "twitter_username": "@catj"
     },
     {
       "id": "shruti-kapoor",
@@ -218,7 +219,8 @@
       "avatar_url": "https://sessionize.com/image/c8c3-400o400o2-PR5UsgApAVEADZRixV4H8e.jpeg",
       "name": "Alexandra",
       "lastname": "Spalato",
-      "twitter_username": "@alexadark"
+      "twitter_username": "@alexadark",
+      "favorite": false
     },
     {
       "id": "erick-tamayo",
@@ -236,16 +238,17 @@
       "twitter_username": "@swalker326"
     },
     {
-      "id": "Alex-Fernandez-ob",
-      "name": "Alex",
-      "lastname": "Fernandez",
-      "twitter_username": "@afer"
-    },
-    {
       "id": "alex-fernandez-fW",
       "name": "Alex",
       "lastname": "Fernandez",
       "twitter_username": "@alexgf"
+    },
+    {
+      "id": "pedro-diaz-N5eZ",
+      "name": "Pedro",
+      "lastname": "Diaz",
+      "twitter_username": "@juan",
+      "favorite": true
     }
   ]
 }

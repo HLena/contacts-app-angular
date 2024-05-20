@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Contact } from '../../shared/interface/contact.interface';
-import { of, switchMap } from 'rxjs';
+import { Subscription, of, switchMap } from 'rxjs';
 import { ContactService } from '../data-access/contact.service';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -15,10 +15,12 @@ import { IdGeneratorService } from '../../shared/services/id-generator.service';
   styleUrl: './contact-edit.component.css',
   providers: [IdGeneratorService],
 })
-export class ContactEditComponent {
+export class ContactEditComponent implements OnInit, OnDestroy {
   userId: string = '';
   contact: Contact | undefined;
   formContactData: Contact = {} as Contact;
+  submitText: string = 'Save';
+  private subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -29,19 +31,23 @@ export class ContactEditComponent {
   ) {}
 
   ngOnInit() {
-    this.route.paramMap
-      .pipe(
-        switchMap((params) => {
-          this.userId = params.get('id') || '';
-          if (this.userId)
-            return this.contactService.getContactById(this.userId);
-          return of({} as Contact);
+    this.subscription.add(
+      this.route.paramMap
+        .pipe(
+          switchMap((params) => {
+            this.userId = params.get('id') || '';
+            if (this.userId)
+              return this.contactService.getContactById(this.userId);
+            return of({} as Contact);
+          })
+        )
+        .subscribe((contact) => {
+          this.contact = contact;
+          if (this.contact) this.formContactData = { ...this.contact };
         })
-      )
-      .subscribe((contact) => {
-        this.contact = contact;
-        if (this.contact) this.formContactData = { ...this.contact };
-      });
+    );
+
+    this.submitText = this.router.url.includes('create') ? 'Create' : 'Save';
   }
 
   onSubmit(form: NgForm) {
@@ -61,7 +67,6 @@ export class ContactEditComponent {
         };
         this.contactService.createContact(newUser).subscribe({
           next: (user) => {
-            console.log(user);
             this.router.navigate(['/contact', user.id]);
           },
         });
@@ -77,5 +82,9 @@ export class ContactEditComponent {
 
   handleCancel() {
     this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
