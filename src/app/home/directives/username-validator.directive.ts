@@ -44,5 +44,4 @@ export class UsernameValidatorDirective {
   validate(control: AbstractControl): ValidationErrors | null {
     return usernameValidator(control);
   }
-
 }

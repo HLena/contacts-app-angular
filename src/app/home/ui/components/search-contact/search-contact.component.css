@@ -57,6 +57,7 @@ div input[type="search"].loading {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -74,6 +75,7 @@ nav a span {
   float: right;
   color: #eeb004;
 }
+
 nav a.active span {
   color: inherit;
 }
@@ -81,6 +83,7 @@ nav a.active span {
 i {
   color: #818181;
 }
+
 nav .active i {
   color: inherit;
 }
@@ -129,11 +132,17 @@ nav a.pending {
   0% {
     background: #e3e3e3;
   }
+
   50% {
     background: hsla(224, 98%, 58%, 0.5);
   }
+
   100% {
     background: #e3e3e3;
   }
 }
 
+a.logo-link-home {
+  color: inherit;
+  text-decoration: none;
+}

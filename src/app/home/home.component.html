@@ -4,11 +4,22 @@
   </div>
   <div id="detail">
     @if (showWelcomeMessage) {
-      <h1>Welcome to Angular Contacts</h1>
-      <p>Manage your contacts in one place.</p>
-      <p>Click on a contact to see details 👀</p>
-      <p>Or <a [routerLink]="['/contact', 'create']">create a new one</a> 🚀</p>
-      <img class="home-app-icon" src="/assets/holographic-contacts-icon.png" alt="contact-app-icon">
+      <div class="banner">
+        <ul class="box-area">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <h1>Welcome to Angular Contacts</h1>
+        <p>Manage your contacts in one place.</p>
+        <p>Click on a contact to see details 👀</p>
+        <p>Or <a class="link-new-contact" [routerLink]="['/contact', 'create']">create a new one</a> 🚀</p>
+        <img class="home-app-icon" src="/assets/biro-computer-zoom-meeting.png" alt="contact-app-icon">
+      </div>
     } @else {
       <router-outlet />
     }
