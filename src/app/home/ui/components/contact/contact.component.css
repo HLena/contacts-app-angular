@@ -72,6 +72,7 @@ button.delete-btn {
 
 #contact .twitter-link:hover {
     text-decoration: underline;
+    text-underline-offset: 7px;
 }
 
 #contact img {
