@@ -21,7 +21,6 @@ import {
 export class SearchContactComponent implements OnInit, OnDestroy {
   public contacts: Contact[] = [];
   public selectedContactId: null | string = null;
-  private searchTerms = new BehaviorSubject<string>('');
   isCreating: boolean = false;
   private subscription: Subscription = new Subscription();
 
@@ -34,7 +33,7 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   }
 
   private setupSearchSubscription(): Subscription {
-    return this.searchTerms
+    return this.contactService.searchTerm$
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
@@ -64,7 +63,7 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   onSearchChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
-      this.searchTerms.next(inputElement.value.trim());
+      this.contactService.updateSearchTerm(inputElement.value.trim())
     }
   }
 
