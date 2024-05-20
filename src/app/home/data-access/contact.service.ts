@@ -9,9 +9,11 @@ export class ContactService {
   private baseUrl: string = environments.baseUrl;
   private contactsSubject = new BehaviorSubject<Contact[]>([]);
   private selectedContactIdSubject = new BehaviorSubject<string | null>(null);
+  private searchTermSubject = new BehaviorSubject<string>('');
 
   contacts$ = this.contactsSubject.asObservable();
   selectedContactId$ = this.selectedContactIdSubject.asObservable();
+  searchTerm$ = this.searchTermSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.loadInitialContacts();
@@ -59,14 +61,14 @@ export class ContactService {
 
   createContact(body: Contact): Observable<Contact> {
     return this.http.post<Contact>(`${this.baseUrl}/contacts`, body).pipe(
-      tap(() => { this.loadInitialContacts()}),
+      tap(() => { this.searchContact(this.searchTermSubject.value)}),
       catchError(this.handleError<Contact>('Failed to create a new contact'))
     );
   }
 
   updateContact(id: string, body: Partial<Contact>): Observable<Contact> {
     return this.http.patch<Contact>(`${this.baseUrl}/contacts/${id}`, body).pipe(
-      tap(() => { this.loadInitialContacts()}),
+      tap(() => { this.searchContact(this.searchTermSubject.value)}),
       catchError(this.handleError<Contact>(`Failed to update the contact with the id=${id}`))
     )
   }
@@ -74,7 +76,7 @@ export class ContactService {
   deleteContact(id: string):Observable<Contact>{
     return this.http.delete<Contact>(`${this.baseUrl}/contacts/${id}`).pipe(
       tap(() => {
-        this.loadInitialContacts()
+        this.searchContact(this.searchTermSubject.value)
       }),
       catchError(this.handleError<Contact>(`Failed to delete the contact with the id=${id}`))
     );
@@ -82,6 +84,10 @@ export class ContactService {
 
   selectContact(contactId: string): void {
     this.selectedContactIdSubject.next(contactId);
+  }
+
+  updateSearchTerm(term: string): void {
+    this.searchTermSubject.next(term);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
