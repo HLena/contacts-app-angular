@@ -55,7 +55,6 @@ export class SearchContactComponent implements OnInit, OnDestroy {
   private setupSelectedContactSubscription(): Subscription {
     return this.contactService.selectedContactId$.subscribe((contactId) => {
       this.selectedContactId = contactId;
-      console.log(contactId, 'id contact')
       if (contactId) {
         this.scrollToContact(contactId);
       }
