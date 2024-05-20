@@ -49,20 +49,13 @@
         placeholder="@jack"
         name="twitter_username"
         [(ngModel)]="formContactData.twitter_username"
-        required
-        minlength="4"
-        maxlength="20"
+        usernameValidator
         #twitterCtrl="ngModel"
       />
       <div
         *ngIf="twitterCtrl.invalid && twitterCtrl.dirty && twitterCtrl.touched"
       >
-        <small class="error" *ngIf="twitterCtrl.hasError('required')"
-          >El usario de Twitter es obligatorio</small
-        >
-        <small class="error" *ngIf="twitterCtrl.hasError('minlength')"
-          >El usuario de Twitter debe tener un minimo de 4 caracteres.</small
-        >
+        <small class="error" *ngIf="twitterCtrl.hasError('invalidUsername')">{{ twitterCtrl.errors?.['invalidUsername'] }}</small>
       </div>
     </div>
   </label>
