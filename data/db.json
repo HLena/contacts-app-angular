@@ -13,11 +13,7 @@
       "id": "giovanni-benussi",
       "avatar_url": "https://sessionize.com/image/08be-400o400o2-WtYGFFR1ZUJHL9tKyVBNPV.jpg",
       "name": "Giovanni",
-<<<<<<< minor-changes
       "lastname": "Benussi",
-=======
-      "lastname": "Benussiii",
->>>>>>> develop
       "twitter_username": "giovannibenussi",
       "favorite": false,
       "note": "Gym buddy."
@@ -25,13 +21,8 @@
     {
       "id": "paul-bratslavsky",
       "avatar_url": "https://sessionize.com/image/feba-400o400o2-R4GE7eqegJNFf3cQ567obs.jpg",
-<<<<<<< minor-changes
       "name": "Paul",
       "lastname": "Bratslavsky",
-=======
-      "name": "Pol",
-      "lastname": "Bratslavskyy",
->>>>>>> develop
       "twitter_username": "codingthirty",
       "favorite": false,
       "note": "Gym buddy."
@@ -41,11 +32,7 @@
       "avatar_url": "https://sessionize.com/image/b07e-400o400o2-KgNRF3S9sD5ZR4UsG7hG4g.jpg",
       "name": "Christopher",
       "lastname": "Chedeau",
-<<<<<<< minor-changes
       "twitter_username": "vjeux",
-=======
-      "twitter_username": "Vjeux",
->>>>>>> develop
       "favorite": false,
       "note": "Friend from college."
     },
@@ -127,11 +114,7 @@
       "lastname": "Kish",
       "favorite": false,
       "note": "",
-<<<<<<< minor-changes
       "twitter_username": "bran_kish"
-=======
-      "twitter_username": "randal_kish"
->>>>>>> develop
     },
     {
       "id": "andre-landgraf",
@@ -154,11 +137,7 @@
       "avatar_url": "https://sessionize.com/image/820b-400o400o2-Ja1KDrBAu5NzYTPLSC3GW8.jpg",
       "name": "Brooks",
       "lastname": "Lybrand",
-<<<<<<< minor-changes
       "twitter_username": "brooksLybrand",
-=======
-      "twitter_username": "BrooksLybrand",
->>>>>>> develop
       "favorite": false,
       "note": ""
     },
@@ -229,12 +208,8 @@
       "avatar_url": "https://sessionize.com/image/c9d5-400o400o2-Sri5qnQmscaJXVB8m3VBgf.jpg",
       "name": "Nevi",
       "lastname": "Shah",
-<<<<<<< minor-changes
       "twitter_username": "nevikashah",
       "favorite": true
-=======
-      "twitter_username": "nevikashah"
->>>>>>> develop
     },
     {
       "id": "scott-smerchek",
@@ -276,11 +251,7 @@
       "id": "pedro-diaz-N5eZ",
       "name": "Pedrito",
       "lastname": "Diaz",
-<<<<<<< minor-changes
       "twitter_username": "pedropedrope",
-=======
-      "twitter_username": "juan",
->>>>>>> develop
       "favorite": true
     },
     {
